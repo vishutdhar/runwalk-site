@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RunWalk Terms of Use - Terms and conditions for using the RunWalk app.">
+    <title>Terms of Use - RunWalk</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-bg: #000000;
+            --color-bg-elevated: #1c1c1e;
+            --color-bg-glass: rgba(255, 255, 255, 0.05);
+            --color-border-glass: rgba(255, 255, 255, 0.1);
+            --color-text-primary: #ffffff;
+            --color-text-secondary: rgba(255, 255, 255, 0.7);
+            --color-text-tertiary: rgba(255, 255, 255, 0.5);
+            --color-accent: #30d158;
+            --gradient-hero: linear-gradient(135deg, #ff9500 0%, #ff6b00 50%, #30d158 100%);
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --radius-sm: 8px;
+            --radius-lg: 24px;
+            --max-width: 800px;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--color-bg);
+            color: var(--color-text-primary);
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 24px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-border-glass);
+        }
+
+        .nav-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--color-text-primary);
+            text-decoration: none;
+        }
+
+        .nav-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-hero);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 120px 24px 80px;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .page-updated {
+            color: var(--color-text-tertiary);
+            font-size: 0.875rem;
+            margin-bottom: 48px;
+        }
+
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--color-text-primary);
+        }
+
+        .section p, .section li {
+            color: var(--color-text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .section li {
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .section li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: var(--color-accent);
+            border-radius: 50%;
+        }
+
+        .highlight-box {
+            background: var(--color-bg-glass);
+            border: 1px solid var(--color-border-glass);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+
+        .footer {
+            border-top: 1px solid var(--color-border-glass);
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .footer-link {
+            color: var(--color-text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .footer-copyright {
+            color: var(--color-text-tertiary);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                </div>
+                RunWalk
+            </a>
+        </div>
+    </nav>
+
+    <main class="content">
+        <h1 class="page-title">Terms of Use</h1>
+        <p class="page-updated">Last updated: January 2025</p>
+
+        <div class="highlight-box">
+            <p><strong>Plain English summary:</strong> RunWalk is a fitness app. Use it responsibly, listen to your body, and don't sue us if you trip over a rock while looking at your watch. We built this app with care, but we can't guarantee it's perfect.</p>
+        </div>
+
+        <section class="section">
+            <h2>Acceptance of Terms</h2>
+            <p>By downloading, installing, or using RunWalk ("the App"), you agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use the App.</p>
+        </section>
+
+        <section class="section">
+            <h2>Use of the App</h2>
+            <p>RunWalk is designed to help you track run-walk interval workouts. You may use the App for your personal, non-commercial fitness activities. You agree to:</p>
+            <ul>
+                <li>Use the App in accordance with all applicable laws</li>
+                <li>Not attempt to reverse engineer, decompile, or disassemble the App</li>
+                <li>Not use the App for any illegal or unauthorized purpose</li>
+                <li>Not interfere with or disrupt the App's functionality</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Health and Safety Disclaimer</h2>
+            <p><strong>Important:</strong> RunWalk is not a medical device and is not intended to diagnose, treat, cure, or prevent any disease or health condition.</p>
+            <p>Before starting any exercise program, including run-walk training:</p>
+            <ul>
+                <li>Consult with your physician or healthcare provider</li>
+                <li>Understand your physical limitations and fitness level</li>
+                <li>Stop exercising immediately if you feel pain, dizziness, or discomfort</li>
+                <li>Stay aware of your surroundings while using the App</li>
+            </ul>
+            <p>The data provided by the App (distance, pace, calories, etc.) is for informational purposes only and may not be completely accurate. Do not rely solely on this data for health-related decisions.</p>
+        </section>
+
+        <section class="section">
+            <h2>Location Services</h2>
+            <p>The App uses GPS to track your running route. By using GPS features, you acknowledge that:</p>
+            <ul>
+                <li>GPS accuracy can vary based on environmental factors</li>
+                <li>Continuous GPS use will increase battery consumption</li>
+                <li>You are responsible for your safety while following any route</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Intellectual Property</h2>
+            <p>RunWalk and all its contents, features, and functionality are owned by Vishut Dhar and are protected by international copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, sell, or lease any part of the App.</p>
+        </section>
+
+        <section class="section">
+            <h2>Third-Party Services</h2>
+            <p>The App may integrate with third-party services such as Apple HealthKit and Strava. Your use of these services is subject to their respective terms and privacy policies. We are not responsible for the practices of third-party services.</p>
+        </section>
+
+        <section class="section">
+            <h2>Disclaimer of Warranties</h2>
+            <p>The App is provided "as is" and "as available" without any warranties of any kind, either express or implied. We do not warrant that:</p>
+            <ul>
+                <li>The App will be uninterrupted or error-free</li>
+                <li>Defects will be corrected</li>
+                <li>The App is free of viruses or other harmful components</li>
+                <li>The results obtained from using the App will be accurate or reliable</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Limitation of Liability</h2>
+            <p>To the fullest extent permitted by law, Vishut Dhar shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses resulting from:</p>
+            <ul>
+                <li>Your use or inability to use the App</li>
+                <li>Any injuries sustained during exercise while using the App</li>
+                <li>Any errors or omissions in the App's content or functionality</li>
+                <li>Unauthorized access to or use of our servers and/or any personal information stored therein</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Changes to Terms</h2>
+            <p>We reserve the right to modify these Terms of Use at any time. We will notify you of any changes by posting the new terms on this page and updating the "Last updated" date. Your continued use of the App after any changes constitutes acceptance of the new terms.</p>
+        </section>
+
+        <section class="section">
+            <h2>Governing Law</h2>
+            <p>These Terms shall be governed by and construed in accordance with the laws of the United States and the State of California, without regard to conflict of law provisions.</p>
+        </section>
+
+        <section class="section">
+            <h2>Contact</h2>
+            <p>If you have any questions about these Terms of Use, please contact us at <a href="mailto:vishutdhar1993@gmail.com">vishutdhar1993@gmail.com</a>.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="privacy.html" class="footer-link">Privacy Policy</a>
+            <a href="terms.html" class="footer-link">Terms of Use</a>
+            <a href="mailto:vishutdhar1993@gmail.com" class="footer-link">Contact</a>
+        </div>
+        <p class="footer-copyright">&copy; 2025 Vishut Dhar. All rights reserved.</p>
+    </footer>
+</body>
+</html>
