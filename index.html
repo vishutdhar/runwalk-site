@@ -13,11 +13,16 @@
     <meta property="og:description" content="The beautifully simple interval timer for the Run-Walk method. Available on iPhone and Apple Watch.">
     <meta property="og:image" content="https://vishutdhar.github.io/runwalk-site/og-image.png">
     <meta property="og:url" content="https://vishutdhar.github.io/runwalk-site">
+    <link rel="canonical" href="https://vishutdhar.github.io/runwalk-site/">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="RunWalk - Run-Walk Interval Timer">
     <meta name="twitter:description" content="The beautifully simple interval timer for the Run-Walk method.">
+    <meta name="twitter:image" content="https://vishutdhar.github.io/runwalk-site/og-image.png">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#000000">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
@@ -25,10 +30,37 @@
 
     <title>RunWalk - Run-Walk Interval Timer for iPhone & Apple Watch</title>
 
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "RunWalk",
+        "operatingSystem": "iOS, watchOS",
+        "applicationCategory": "HealthApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0.99",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "ratingCount": "1"
+        },
+        "description": "The beautifully simple interval timer for the Run-Walk method. Build endurance, reduce injury risk, and enjoy running again.",
+        "screenshot": "https://vishutdhar.github.io/runwalk-site/og-image.png",
+        "author": {
+            "@type": "Person",
+            "name": "Vishut Dhar"
+        }
+    }
+    </script>
+
     <!-- Preload critical fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         /* ===== CSS Variables ===== */
@@ -809,6 +841,30 @@
             color: var(--color-text-tertiary);
         }
 
+        /* ===== Accessibility ===== */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 16px;
+            padding: 8px 16px;
+            background: var(--color-accent);
+            color: #000;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            z-index: 1001;
+            transition: top var(--transition-fast);
+        }
+
+        .skip-link:focus {
+            top: 16px;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+
         /* ===== Responsive ===== */
         @media (max-width: 1024px) {
             .hero-content {
@@ -956,19 +1012,21 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Navigation -->
     <nav class="nav">
         <div class="container nav-content">
-            <a href="#" class="nav-logo">
+            <a href="/" class="nav-logo">
                 <div class="nav-logo-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
                     </svg>
                 </div>
                 RunWalk
             </a>
             <a href="https://apps.apple.com/app/id6757393068" class="nav-cta" target="_blank" rel="noopener">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                 </svg>
                 <span>Download</span>
@@ -976,8 +1034,9 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
         <div class="container hero-content">
             <div class="hero-text">
                 <div class="hero-badge">
@@ -1048,22 +1107,22 @@
             </div>
             <div class="features-grid">
                 <div class="feature-card glass-card">
-                    <div class="feature-icon">&#x231B;</div>
+                    <div class="feature-icon" aria-hidden="true">&#x231B;</div>
                     <h3 class="feature-title">Smart Intervals</h3>
                     <p class="feature-desc">9 presets from 30 sec to 15 min, plus fully custom intervals. Set it once, run forever.</p>
                 </div>
                 <div class="feature-card glass-card">
-                    <div class="feature-icon">&#x1F4CD;</div>
+                    <div class="feature-icon" aria-hidden="true">&#x1F4CD;</div>
                     <h3 class="feature-title">GPS Routes</h3>
                     <p class="feature-desc">Track your route with live maps during your workout. See distance, pace, and elevation.</p>
                 </div>
                 <div class="feature-card glass-card">
-                    <div class="feature-icon">&#x231A;</div>
+                    <div class="feature-icon" aria-hidden="true">&#x231A;</div>
                     <h3 class="feature-title">Apple Watch</h3>
                     <p class="feature-desc">Fully standalone. Leave your phone at home and still get voice cues and haptics.</p>
                 </div>
                 <div class="feature-card glass-card">
-                    <div class="feature-icon">&#x2764;</div>
+                    <div class="feature-icon" aria-hidden="true">&#x2764;</div>
                     <h3 class="feature-title">HealthKit</h3>
                     <p class="feature-desc">Automatically saves workouts to Apple Health. Your rings will thank you.</p>
                 </div>
@@ -1072,7 +1131,7 @@
     </section>
 
     <!-- How It Works Section -->
-    <section class="how-it-works">
+    <section class="how-it-works" id="how-it-works">
         <div class="container">
             <div class="section-header">
                 <span class="section-label">How It Works</span>
@@ -1100,7 +1159,7 @@
     </section>
 
     <!-- Audience Section -->
-    <section class="audience">
+    <section class="audience" id="audience">
         <div class="container">
             <div class="section-header">
                 <span class="section-label">For Everyone</span>
@@ -1108,17 +1167,17 @@
             </div>
             <div class="audience-grid">
                 <div class="audience-card glass-card">
-                    <div class="audience-emoji">&#x1F331;</div>
+                    <div class="audience-emoji" aria-hidden="true">&#x1F331;</div>
                     <h3 class="audience-title">Just Starting Out</h3>
                     <p class="audience-desc">The Run-Walk method is the gentlest way to become a runner. Build endurance without burning out. Start with 30 sec runs and work your way up.</p>
                 </div>
                 <div class="audience-card glass-card">
-                    <div class="audience-emoji">&#x1F3C3;</div>
+                    <div class="audience-emoji" aria-hidden="true">&#x1F3C3;</div>
                     <h3 class="audience-title">Coming Back</h3>
                     <p class="audience-desc">Returning from injury or a long break? Run-Walk lets you ease back in safely while still getting a great workout. Listen to your body.</p>
                 </div>
                 <div class="audience-card glass-card">
-                    <div class="audience-emoji">&#x1F3C5;</div>
+                    <div class="audience-emoji" aria-hidden="true">&#x1F3C5;</div>
                     <h3 class="audience-title">Going Long</h3>
                     <p class="audience-desc">Training for a marathon or ultra? Elite athletes use Run-Walk to go further with less fatigue. It's not cheating&mdash;it's strategy.</p>
                 </div>
@@ -1127,26 +1186,26 @@
     </section>
 
     <!-- Strava Section -->
-    <section class="strava">
+    <section class="strava" id="strava">
         <div class="container strava-content">
             <div class="strava-text">
                 <div class="strava-badge">
-                    <span>&#x2728;</span>
+                    <span aria-hidden="true">&#x2728;</span>
                     Coming Soon
                 </div>
                 <h2 class="strava-title">Share to Strava</h2>
                 <p class="strava-desc">Your workouts deserve an audience. Soon you'll be able to share your runs directly to Strava with one tap.</p>
                 <div class="strava-features">
                     <div class="strava-feature">
-                        <div class="strava-feature-icon">&#x2713;</div>
+                        <div class="strava-feature-icon" aria-hidden="true">&#x2713;</div>
                         <span>Automatic GPS route upload</span>
                     </div>
                     <div class="strava-feature">
-                        <div class="strava-feature-icon">&#x2713;</div>
+                        <div class="strava-feature-icon" aria-hidden="true">&#x2713;</div>
                         <span>Distance, pace & stats synced</span>
                     </div>
                     <div class="strava-feature">
-                        <div class="strava-feature-icon">&#x2713;</div>
+                        <div class="strava-feature-icon" aria-hidden="true">&#x2713;</div>
                         <span>Share with your community</span>
                     </div>
                 </div>
@@ -1160,7 +1219,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta">
+    <section class="cta" id="download">
         <div class="container">
             <div class="cta-card glass-card">
                 <div class="cta-content">
@@ -1178,6 +1237,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
