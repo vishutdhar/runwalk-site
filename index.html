@@ -40,7 +40,7 @@
         "applicationCategory": "HealthApplication",
         "offers": {
             "@type": "Offer",
-            "price": "0.99",
+            "price": "4.99",
             "priceCurrency": "USD"
         },
         "aggregateRating": {
@@ -631,56 +631,56 @@
             line-height: 1.7;
         }
 
-        /* ===== Strava Section ===== */
-        .strava {
+        /* ===== Watch Sync Section ===== */
+        .sync {
             padding: 120px 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(252, 76, 2, 0.03) 50%, transparent 100%);
+            background: linear-gradient(180deg, transparent 0%, rgba(48, 209, 88, 0.03) 50%, transparent 100%);
         }
 
-        .strava-content {
+        .sync-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
             align-items: center;
         }
 
-        .strava-text {
+        .sync-text {
             max-width: 480px;
         }
 
-        .strava-badge {
+        .sync-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             padding: 8px 16px;
-            background: rgba(252, 76, 2, 0.1);
-            border: 1px solid rgba(252, 76, 2, 0.2);
+            background: rgba(48, 209, 88, 0.1);
+            border: 1px solid rgba(48, 209, 88, 0.2);
             border-radius: 100px;
             font-size: 0.875rem;
-            color: #fc4c02;
+            color: var(--color-accent);
             margin-bottom: 24px;
         }
 
-        .strava-title {
+        .sync-title {
             font-size: clamp(1.75rem, 3vw, 2.5rem);
             font-weight: 700;
             margin-bottom: 20px;
         }
 
-        .strava-desc {
+        .sync-desc {
             font-size: 1.125rem;
             color: var(--color-text-secondary);
             margin-bottom: 32px;
             line-height: 1.7;
         }
 
-        .strava-features {
+        .sync-features {
             display: flex;
             flex-direction: column;
             gap: 16px;
         }
 
-        .strava-feature {
+        .sync-feature {
             display: flex;
             align-items: center;
             gap: 12px;
@@ -688,41 +688,83 @@
             color: var(--color-text-secondary);
         }
 
-        .strava-feature-icon {
+        .sync-feature-icon {
             width: 24px;
             height: 24px;
-            background: rgba(252, 76, 2, 0.1);
+            background: rgba(48, 209, 88, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fc4c02;
+            color: var(--color-accent);
             font-size: 0.75rem;
+            /* These rows carry longer copy than the old ones and wrap to two
+               lines; without this the circle is squashed into an oval. */
+            flex-shrink: 0;
         }
 
-        .strava-visual {
+        .sync-visual {
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .strava-logo-container {
-            width: 200px;
-            height: 200px;
-            background: var(--color-bg-glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--color-border-glass);
-            border-radius: var(--radius-xl);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+        .sync-glow {
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(48, 209, 88, 0.18) 0%, transparent 70%);
+            pointer-events: none;
         }
 
-        .strava-logo {
-            font-size: 4rem;
-            font-weight: 800;
-            color: #fc4c02;
+        /* The hero's watch, one screen later. Geometry is the hero frame scaled
+           up by 1.214 so the two read as the same device rather than two
+           drawings of one: 140x170 becomes 170x206, and the radii and padding
+           scale with it. */
+        .sync-watch-frame {
+            position: relative;
+            width: 170px;
+            height: 206px;
+            background: linear-gradient(145deg, #3a3a3c 0%, #2c2c2e 100%);
+            border-radius: 44px;
+            padding: 10px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4),
+                        0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        .sync-watch-screen {
+            width: 100%;
+            height: 100%;
+            background: var(--color-bg);
+            border-radius: 36px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        /* Set like the phase label, but in the accent rather than the run
+           orange: this is the moment a mile is logged, not a phase in progress. */
+        .sync-watch-label {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            letter-spacing: 0.08em;
+            margin-bottom: 8px;
+        }
+
+        .sync-watch-split {
+            font-size: 2rem;
+            font-weight: 300;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .sync-watch-unit {
+            font-size: 1rem;
+            color: var(--color-text-tertiary);
+            margin-left: 4px;
         }
 
         /* ===== CTA Section ===== */
@@ -912,18 +954,24 @@
                 grid-template-columns: 1fr;
             }
 
-            .strava-content {
+            .sync-content {
                 grid-template-columns: 1fr;
                 gap: 60px;
                 text-align: center;
             }
 
-            .strava-text {
+            .sync-text {
                 max-width: 100%;
             }
 
-            .strava-features {
+            .sync-features {
                 align-items: center;
+            }
+
+            /* The group centres, the sentences do not: a wrapped two-line
+               feature centred against its icon reads as a ransom note. */
+            .sync-feature {
+                text-align: left;
             }
 
             .cta-card {
@@ -1057,7 +1105,7 @@
                 </div>
                 <div class="hero-meta">
                     <div class="hero-meta-item">
-                        <span class="hero-meta-value">$0.99</span>
+                        <span class="hero-meta-value">$4.99</span>
                         <span class="hero-meta-label">One-time purchase</span>
                     </div>
                     <div class="hero-meta-item">
@@ -1120,7 +1168,7 @@
                 <div class="feature-card glass-card">
                     <div class="feature-icon" aria-hidden="true">&#x231A;</div>
                     <h3 class="feature-title">Apple Watch</h3>
-                    <p class="feature-desc">Fully standalone. Leave your phone at home and still get voice cues and haptics.</p>
+                    <p class="feature-desc">Fully standalone. Leave your phone at home, and every workout still lands in the iPhone app on its own.</p>
                 </div>
                 <div class="feature-card glass-card">
                     <div class="feature-icon" aria-hidden="true">&#x2764;</div>
@@ -1186,34 +1234,35 @@
         </div>
     </section>
 
-    <!-- Strava Section -->
-    <section class="strava" id="strava">
-        <div class="container strava-content">
-            <div class="strava-text">
-                <div class="strava-badge">
-                    <span aria-hidden="true">&#x2728;</span>
-                    Coming Soon
-                </div>
-                <h2 class="strava-title">Share to Strava</h2>
-                <p class="strava-desc">Your workouts deserve an audience. Soon you'll be able to share your runs directly to Strava with one tap.</p>
-                <div class="strava-features">
-                    <div class="strava-feature">
-                        <div class="strava-feature-icon" aria-hidden="true">&#x2713;</div>
-                        <span>Automatic GPS route upload</span>
+    <!-- Watch Sync Section -->
+    <section class="sync" id="watch-sync">
+        <div class="container sync-content">
+            <div class="sync-text">
+                <div class="sync-badge">New in 3.0</div>
+                <h2 class="sync-title">Your watch runs. Your phone keeps the log.</h2>
+                <p class="sync-desc">Finish a workout on your Apple Watch and it appears in the iPhone app on its own. No pairing dance, no export, nothing to remember.</p>
+                <div class="sync-features">
+                    <div class="sync-feature">
+                        <div class="sync-feature-icon" aria-hidden="true">&#x2713;</div>
+                        <span>Workouts transfer by themselves</span>
                     </div>
-                    <div class="strava-feature">
-                        <div class="strava-feature-icon" aria-hidden="true">&#x2713;</div>
-                        <span>Distance, pace & stats synced</span>
+                    <div class="sync-feature">
+                        <div class="sync-feature-icon" aria-hidden="true">&#x2713;</div>
+                        <span>Every mile announced: a tap on the wrist, a card, and your split spoken aloud</span>
                     </div>
-                    <div class="strava-feature">
-                        <div class="strava-feature-icon" aria-hidden="true">&#x2713;</div>
-                        <span>Share with your community</span>
+                    <div class="sync-feature">
+                        <div class="sync-feature-icon" aria-hidden="true">&#x2713;</div>
+                        <span>Workouts recorded before the update come across too</span>
                     </div>
                 </div>
             </div>
-            <div class="strava-visual">
-                <div class="strava-logo-container">
-                    <div class="strava-logo">S</div>
+            <div class="sync-visual" aria-hidden="true">
+                <div class="sync-glow"></div>
+                <div class="sync-watch-frame">
+                    <div class="sync-watch-screen">
+                        <div class="sync-watch-label">MILE 3</div>
+                        <div class="sync-watch-split">9:41<span class="sync-watch-unit">/mi</span></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1227,7 +1276,7 @@
                     <h2 class="cta-title">Ready to run smarter?</h2>
                     <p class="cta-subtitle">Join thousands of runners who've discovered the power of strategic walking breaks.</p>
                     <div class="cta-price">
-                        <span class="cta-price-amount">$0.99</span>
+                        <span class="cta-price-amount">$4.99</span>
                         <span class="cta-price-period">one-time</span>
                     </div>
                     <a href="https://apps.apple.com/app/id6757393068" target="_blank" rel="noopener">
