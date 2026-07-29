@@ -12,7 +12,8 @@
     <meta property="og:title" content="RunWalk - Run-Walk Interval Timer">
     <meta property="og:description" content="The beautifully simple interval timer for the Run-Walk method. Available on iPhone and Apple Watch.">
     <meta property="og:image" content="https://vishutdhar.github.io/runwalk-site/og-image.png">
-    <meta property="og:url" content="https://vishutdhar.github.io/runwalk-site">
+    <meta property="og:image:alt" content="RunWalk, the run-walk interval timer for iPhone and Apple Watch">
+    <meta property="og:url" content="https://vishutdhar.github.io/runwalk-site/">
     <link rel="canonical" href="https://vishutdhar.github.io/runwalk-site/">
 
     <!-- Twitter -->
@@ -43,13 +44,7 @@
             "price": "4.99",
             "priceCurrency": "USD"
         },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5",
-            "ratingCount": "1"
-        },
         "description": "The beautifully simple interval timer for the Run-Walk method. Build endurance, reduce injury risk, and enjoy running again.",
-        "screenshot": "https://vishutdhar.github.io/runwalk-site/og-image.png",
         "author": {
             "@type": "Person",
             "name": "Vishut Dhar"
@@ -735,11 +730,11 @@
                     </h1>
                     <p class="hero-sub">The interval timer for the run-walk method. Voice cues at every switch, so your phone stays in your pocket and you keep moving.</p>
                     <div class="hero-actions">
-                        <a href="https://apps.apple.com/app/id6757393068" target="_blank" rel="noopener">
+                        <a href="https://apps.apple.com/app/id6757393068">
                             <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Download RunWalk on the App Store" class="store-badge">
                         </a>
                     </div>
-                    <ul class="hero-meta">
+                    <ul class="hero-meta" role="list">
                         <li>$4.99 once</li>
                         <li>No ads, no subscription</li>
                         <li>iPhone + Apple Watch</li>
@@ -825,7 +820,7 @@
                     <p class="eyebrow sync-eyebrow">New in 3.0</p>
                     <h2 class="section-title">Your watch runs. Your phone keeps the log.</h2>
                     <p class="sync-body">Finish a workout on your Apple Watch and it appears in the iPhone app on its own. Workouts recorded before the update come across too.</p>
-                    <ul class="sync-list">
+                    <ul class="sync-list" role="list">
                         <li class="sync-item">
                             <svg class="sync-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M20 6L9 17l-5-5"></path>
@@ -901,10 +896,10 @@
         <section class="band">
             <div class="wrap">
                 <div class="card price-card">
-                    <p class="eyebrow">The price</p>
+                    <h2 class="eyebrow">The price</h2>
                     <p class="price-amount">$4.99</p>
                     <p class="price-terms">Once. Not per month.</p>
-                    <p class="price-body">Most running apps charge 40 to 80 dollars a year. RunWalk is a single purchase with every feature included, forever. No account, no ads, no tracking.</p>
+                    <p class="price-body">Most running apps charge 40 to 80 dollars a year. RunWalk is a single purchase with every feature included, forever. No account, no ads, no analytics.</p>
                 </div>
             </div>
         </section>
@@ -917,7 +912,7 @@
         <section class="band" id="download">
             <div class="wrap cta-inner">
                 <h2 class="cta-title">Ready to run smarter?</h2>
-                <a href="https://apps.apple.com/app/id6757393068" target="_blank" rel="noopener">
+                <a href="https://apps.apple.com/app/id6757393068">
                     <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Download RunWalk on the App Store" class="store-badge">
                 </a>
                 <p class="cta-terms">$4.99 once. Yours forever.</p>
@@ -956,6 +951,13 @@
         var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
         var frameId = null;
         var startedAt = null;
+        /* Seconds already run before the last pause, plus the reading at the
+           most recent frame. Together they let the loop resume exactly where it
+           stopped rather than jumping to wherever the wall clock has reached,
+           which is both smoother and impossible to mistake for a burst. */
+        var heldSeconds = 0;
+        var lastSeconds = 0;
+        var onScreen = true;
 
         function paint(phase, remaining) {
             timer.dataset.phase = phase;
@@ -967,8 +969,8 @@
 
         function frame(now) {
             if (startedAt === null) { startedAt = now; }
-            var elapsed = (now - startedAt) / 1000;
-            var cycle = elapsed % (PHASE_SECONDS * 2);
+            lastSeconds = heldSeconds + (now - startedAt) / 1000;
+            var cycle = lastSeconds % (PHASE_SECONDS * 2);
             paint(
                 cycle < PHASE_SECONDS ? 'run' : 'walk',
                 PHASE_SECONDS - (cycle % PHASE_SECONDS)
@@ -976,21 +978,38 @@
             frameId = window.requestAnimationFrame(frame);
         }
 
+        function startLoop() {
+            if (frameId !== null) { return; }
+            startedAt = null;   // rebased on the first frame after resuming
+            frameId = window.requestAnimationFrame(frame);
+        }
+
+        function stopLoop() {
+            if (frameId === null) { return; }
+            window.cancelAnimationFrame(frameId);
+            frameId = null;
+            heldSeconds = lastSeconds;
+        }
+
         function apply() {
             if (reduceMotion.matches) {
-                if (frameId !== null) {
-                    window.cancelAnimationFrame(frameId);
-                    frameId = null;
-                }
+                stopLoop();
                 // Held mid-run rather than at zero: a stopped clock reading
                 // 0:00 looks broken, one reading 0:21 looks paused.
                 paint('run', 21);
                 return;
             }
-            if (frameId === null) {
-                startedAt = null;
-                frameId = window.requestAnimationFrame(frame);
-            }
+            if (onScreen) { startLoop(); } else { stopLoop(); }
+        }
+
+        // Nothing to animate while the hero is scrolled away. Without this the
+        // loop keeps a frame callback alive down the whole page and on into
+        // every other tab the visitor leaves open.
+        if (typeof window.IntersectionObserver === 'function') {
+            new window.IntersectionObserver(function (entries) {
+                onScreen = entries[entries.length - 1].isIntersecting;
+                apply();
+            }, { threshold: 0 }).observe(timer);
         }
 
         apply();
