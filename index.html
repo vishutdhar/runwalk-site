@@ -22,7 +22,7 @@
     <meta name="twitter:image" content="https://vishutdhar.github.io/runwalk-site/og-image.png">
 
     <!-- Theme Color -->
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#0A0B0D">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
@@ -171,7 +171,12 @@
         /* ===== Interval rule =====
            The app's rhythm used as structure: run blocks and walk blocks,
            60/30/60/30, repeating. Decorative, so it is hidden from the
-           accessibility tree at the markup. */
+           accessibility tree at the markup.
+
+           Held inside `.wrap` so it lines up with the type either side of it,
+           and used three times only. Full bleed at every section boundary
+           turned a motif into five loud hairlines, and the eye stopped reading
+           it as the intervals at all. */
         .interval-rule {
             height: 4px;
             background: repeating-linear-gradient(
@@ -617,6 +622,16 @@
             letter-spacing: -0.02em;
         }
 
+        /* Answers the question the badge raises, so the section does not end
+           on an unpriced button. */
+        .cta-terms {
+            font-family: var(--font-data);
+            font-size: 0.8125rem;
+            letter-spacing: 0.06em;
+            color: var(--split);
+            margin-top: -8px;
+        }
+
         /* ===== Footer ===== */
         .footer {
             border-top: 1px solid var(--line);
@@ -749,7 +764,9 @@
             </div>
         </section>
 
-        <div class="interval-rule" aria-hidden="true"></div>
+        <div class="wrap">
+            <div class="interval-rule" aria-hidden="true"></div>
+        </div>
 
         <!-- Features -->
         <section class="band" id="features">
@@ -779,9 +796,11 @@
 
                     <article class="card">
                         <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <rect x="7" y="6" width="10" height="12" rx="3"></rect>
-                            <path d="M9.5 6V3.5h5V6M9.5 18v2.5h5V18"></path>
-                            <path d="M12 10.5v2.2l1.6 1"></path>
+                            <rect x="6.5" y="6.5" width="11" height="11" rx="3.5"></rect>
+                            <path d="M9.6 6.5V4.2A1.7 1.7 0 0 1 11.3 2.5h1.4a1.7 1.7 0 0 1 1.7 1.7v2.3"></path>
+                            <path d="M9.6 17.5v2.3a1.7 1.7 0 0 0 1.7 1.7h1.4a1.7 1.7 0 0 0 1.7-1.7v-2.3"></path>
+                            <path d="M17.5 10.7v2.6"></path>
+                            <circle cx="12" cy="12" r="2.6"></circle>
                         </svg>
                         <h3 class="feature-title">Apple Watch</h3>
                         <p class="feature-desc">Fully standalone. Leave your phone at home, and every workout still lands in the iPhone app on its own.</p>
@@ -798,7 +817,6 @@
             </div>
         </section>
 
-        <div class="interval-rule" aria-hidden="true"></div>
 
         <!-- New in 3.0 -->
         <section class="band">
@@ -848,7 +866,9 @@
             </div>
         </section>
 
-        <div class="interval-rule" aria-hidden="true"></div>
+        <div class="wrap">
+            <div class="interval-rule" aria-hidden="true"></div>
+        </div>
 
         <!-- How it works -->
         <section class="band" id="how-it-works">
@@ -876,7 +896,6 @@
             </div>
         </section>
 
-        <div class="interval-rule" aria-hidden="true"></div>
 
         <!-- Price -->
         <section class="band">
@@ -890,7 +909,9 @@
             </div>
         </section>
 
-        <div class="interval-rule" aria-hidden="true"></div>
+        <div class="wrap">
+            <div class="interval-rule" aria-hidden="true"></div>
+        </div>
 
         <!-- CTA -->
         <section class="band" id="download">
@@ -899,6 +920,7 @@
                 <a href="https://apps.apple.com/app/id6757393068" target="_blank" rel="noopener">
                     <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Download RunWalk on the App Store" class="store-badge">
                 </a>
+                <p class="cta-terms">$4.99 once. Yours forever.</p>
             </div>
         </section>
     </main>
