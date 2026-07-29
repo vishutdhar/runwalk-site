@@ -786,7 +786,7 @@
                             <circle cx="12" cy="10" r="2.5"></circle>
                         </svg>
                         <h3 class="feature-title">GPS Routes</h3>
-                        <p class="feature-desc">Live route map, pace, and a saved map with every workout.</p>
+                        <p class="feature-desc">A live map and pace while you run, and the route saved with the workout.</p>
                     </article>
 
                     <article class="card">
@@ -806,7 +806,7 @@
                             <path d="M12 20.1l-1-.9C6.3 15 3.2 12.2 3.2 8.8A4.6 4.6 0 0 1 7.8 4.2c1.6 0 3.1.8 4.2 2.1 1.1-1.3 2.6-2.1 4.2-2.1a4.6 4.6 0 0 1 4.6 4.6c0 3.4-3.1 6.2-7.8 10.4z"></path>
                         </svg>
                         <h3 class="feature-title">HealthKit</h3>
-                        <p class="feature-desc">Every workout saved to Apple Health. Your rings will thank you.</p>
+                        <p class="feature-desc">Workouts save to Apple Health with your permission. Your rings will thank you.</p>
                     </article>
                 </div>
             </div>
@@ -831,7 +831,7 @@
                             <svg class="sync-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M20 6L9 17l-5-5"></path>
                             </svg>
-                            <span>Every mile announced: a tap on the wrist, a card, and your split spoken aloud</span>
+                            <span>Every mile announced: a tap on the wrist, your split on a card, and the distance spoken aloud</span>
                         </li>
                         <li class="sync-item">
                             <svg class="sync-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -885,7 +885,7 @@
                     <article class="card">
                         <p class="step-number">03</p>
                         <h3 class="step-title">Review and improve</h3>
-                        <p class="step-desc">Distance, pace, splits and your route, saved to history and to Apple Health.</p>
+                        <p class="step-desc">Distance, pace and your route, saved to history. Workouts land in Apple Health too.</p>
                     </article>
                 </div>
             </div>
@@ -899,7 +899,7 @@
                     <h2 class="eyebrow">The price</h2>
                     <p class="price-amount">$4.99</p>
                     <p class="price-terms">Once. Not per month.</p>
-                    <p class="price-body">Most running apps charge 40 to 80 dollars a year. RunWalk is a single purchase with every feature included, forever. No account, no ads, no analytics.</p>
+                    <p class="price-body">The big-name running apps charge 40 to 80 dollars a year. RunWalk is a single purchase with every feature included, forever. No account, no ads, no analytics.</p>
                 </div>
             </div>
         </section>
@@ -958,6 +958,10 @@
         var heldSeconds = 0;
         var lastSeconds = 0;
         var onScreen = true;
+        /* A backgrounded tab suspends requestAnimationFrame without firing the
+           observer, so the hero would otherwise come back having counted every
+           second the visitor spent elsewhere and lurch forward to catch up. */
+        var tabVisible = !document.hidden;
 
         function paint(phase, remaining) {
             timer.dataset.phase = phase;
@@ -999,7 +1003,7 @@
                 paint('run', 21);
                 return;
             }
-            if (onScreen) { startLoop(); } else { stopLoop(); }
+            if (onScreen && tabVisible) { startLoop(); } else { stopLoop(); }
         }
 
         // Nothing to animate while the hero is scrolled away. Without this the
@@ -1011,6 +1015,11 @@
                 apply();
             }, { threshold: 0 }).observe(timer);
         }
+
+        document.addEventListener('visibilitychange', function () {
+            tabVisible = !document.hidden;
+            apply();
+        });
 
         apply();
 
