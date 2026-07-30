@@ -12,7 +12,8 @@
     <meta property="og:title" content="RunWalk - Run-Walk Interval Timer">
     <meta property="og:description" content="The beautifully simple interval timer for the Run-Walk method. Available on iPhone and Apple Watch.">
     <meta property="og:image" content="https://vishutdhar.github.io/runwalk-site/og-image.png">
-    <meta property="og:url" content="https://vishutdhar.github.io/runwalk-site">
+    <meta property="og:image:alt" content="RunWalk, the run-walk interval timer for iPhone and Apple Watch">
+    <meta property="og:url" content="https://vishutdhar.github.io/runwalk-site/">
     <link rel="canonical" href="https://vishutdhar.github.io/runwalk-site/">
 
     <!-- Twitter -->
@@ -22,13 +23,13 @@
     <meta name="twitter:image" content="https://vishutdhar.github.io/runwalk-site/og-image.png">
 
     <!-- Theme Color -->
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#0A0B0D">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-    <title>RunWalk - Run-Walk Interval Timer for iPhone & Apple Watch</title>
+    <title>RunWalk - Run-Walk Interval Timer for iPhone &amp; Apple Watch</title>
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -40,16 +41,10 @@
         "applicationCategory": "HealthApplication",
         "offers": {
             "@type": "Offer",
-            "price": "0.99",
+            "price": "4.99",
             "priceCurrency": "USD"
         },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5",
-            "ratingCount": "1"
-        },
         "description": "The beautifully simple interval timer for the Run-Walk method. Build endurance, reduce injury risk, and enjoy running again.",
-        "screenshot": "https://vishutdhar.github.io/runwalk-site/og-image.png",
         "author": {
             "@type": "Person",
             "name": "Vishut Dhar"
@@ -57,38 +52,37 @@
     }
     </script>
 
-    <!-- Preload critical fonts -->
+    <!-- Fonts: Archivo carries the display voice, Plex Mono every number and
+         label, Inter the reading copy. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
-        /* ===== CSS Variables ===== */
+        /* ===== Tokens =====
+           Asphalt and lane markings. Depth comes from a raised surface on a
+           darker ground with a hairline between them, never from glow. */
         :root {
-            --color-bg: #000000;
-            --color-bg-elevated: #1c1c1e;
-            --color-bg-glass: rgba(255, 255, 255, 0.05);
-            --color-border-glass: rgba(255, 255, 255, 0.1);
-            --color-text-primary: #ffffff;
-            --color-text-secondary: rgba(255, 255, 255, 0.7);
-            --color-text-tertiary: rgba(255, 255, 255, 0.5);
-            --color-run: #ff9500;
-            --color-walk: #30d158;
-            --color-accent: #30d158;
-            --gradient-hero: linear-gradient(135deg, #ff9500 0%, #ff6b00 50%, #30d158 100%);
-            --gradient-card: linear-gradient(135deg, rgba(255, 149, 0, 0.1) 0%, rgba(48, 209, 88, 0.1) 100%);
-            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            --radius-sm: 8px;
-            --radius-md: 16px;
-            --radius-lg: 24px;
-            --radius-xl: 32px;
-            --shadow-glow: 0 0 60px rgba(48, 209, 88, 0.15);
-            --transition-fast: 0.2s ease;
-            --transition-medium: 0.3s ease;
-            --max-width: 1200px;
+            --track: #0A0B0D;
+            --lane: #14161A;
+            --line: #262A31;
+            --chalk: #F4F5F2;
+            --split: #9BA1A8;
+            --run: #FF6A3D;
+            --walk: #58C472;
+
+            --radius-card: 16px;
+            --radius-pill: 999px;
+
+            --font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+            --font-data: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+            --max-width: 1120px;
+            --band-space: clamp(72px, 9vw, 120px);
         }
 
-        /* ===== Reset & Base ===== */
+        /* ===== Reset ===== */
         *, *::before, *::after {
             margin: 0;
             padding: 0;
@@ -97,917 +91,619 @@
 
         html {
             scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            background: var(--track);
+            color: var(--chalk);
+            font-family: var(--font-body);
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        body {
-            font-family: var(--font-family);
-            background-color: var(--color-bg);
-            color: var(--color-text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
+        img { max-width: 100%; height: auto; display: block; }
+
+        a { color: inherit; text-decoration: none; }
+
+        ul { list-style: none; }
+
+        :focus-visible {
+            outline: 2px solid var(--run);
+            outline-offset: 3px;
+            border-radius: 4px;
         }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* ===== Utility Classes ===== */
-        .container {
+        /* ===== Layout primitives =====
+           `.band` is the ONLY thing that sets section rhythm. Nothing else
+           sets vertical padding on a section, so there is no second rule to
+           collide with it. */
+        .wrap {
+            width: 100%;
             max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0 24px;
+            padding-inline: 24px;
         }
 
-        .gradient-text {
-            background: var(--gradient-hero);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .band {
+            padding-block: var(--band-space);
         }
 
-        .glass-card {
-            background: var(--color-bg-glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--color-border-glass);
-            border-radius: var(--radius-lg);
-        }
-
-        /* ===== Navigation ===== */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 16px 0;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--color-border-glass);
-        }
-
-        .nav-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 700;
-            font-size: 1.25rem;
-        }
-
-        .nav-logo-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--gradient-hero);
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .nav-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: var(--color-accent);
-            color: #000;
-            font-weight: 600;
-            font-size: 0.875rem;
-            border-radius: 100px;
-            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(48, 209, 88, 0.3);
-        }
-
-        /* ===== Hero Section ===== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 120px 0 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 149, 0, 0.08) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 70%, rgba(48, 209, 88, 0.08) 0%, transparent 50%);
-            animation: heroGlow 15s ease-in-out infinite alternate;
-        }
-
-        @keyframes heroGlow {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(-5%, -5%) rotate(5deg); }
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-text {
-            max-width: 560px;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: var(--color-bg-glass);
-            border: 1px solid var(--color-border-glass);
-            border-radius: 100px;
-            font-size: 0.875rem;
-            color: var(--color-text-secondary);
-            margin-bottom: 24px;
-        }
-
-        .hero-badge-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--color-accent);
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+        /* ===== Type ===== */
+        .display {
+            font-family: var(--font-display);
             font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 24px;
+            line-height: 1.05;
             letter-spacing: -0.02em;
         }
 
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--color-text-secondary);
-            margin-bottom: 40px;
-            line-height: 1.7;
-        }
-
-        .hero-cta-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            align-items: center;
-        }
-
-        .app-store-badge {
-            height: 54px;
-            transition: transform var(--transition-fast), opacity var(--transition-fast);
-        }
-
-        .app-store-badge:hover {
-            transform: scale(1.05);
-            opacity: 0.9;
-        }
-
-        .hero-meta {
-            display: flex;
-            gap: 32px;
-            margin-top: 48px;
-            padding-top: 32px;
-            border-top: 1px solid var(--color-border-glass);
-        }
-
-        .hero-meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .hero-meta-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .hero-meta-label {
-            font-size: 0.875rem;
-            color: var(--color-text-tertiary);
-        }
-
-        .hero-visual {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-phone {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-phone-frame {
-            width: 280px;
-            height: 580px;
-            background: linear-gradient(145deg, #2c2c2e 0%, #1c1c1e 100%);
-            border-radius: 44px;
-            padding: 12px;
-            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5),
-                        0 0 0 1px rgba(255, 255, 255, 0.1),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .hero-phone-screen {
-            width: 100%;
-            height: 100%;
-            background: var(--color-bg);
-            border-radius: 36px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-        }
-
-        .phone-phase {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-run);
-            margin-bottom: 16px;
-            letter-spacing: 0.1em;
-        }
-
-        .phone-timer-ring {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background: conic-gradient(var(--color-run) 0deg 252deg, rgba(255, 149, 0, 0.2) 252deg 360deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            animation: timerPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes timerPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
-
-        .phone-timer-inner {
-            width: 156px;
-            height: 156px;
-            background: var(--color-bg);
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .phone-timer-time {
-            font-size: 2.5rem;
-            font-weight: 300;
-            font-variant-numeric: tabular-nums;
-        }
-
-        .phone-timer-label {
+        .eyebrow {
+            font-family: var(--font-data);
             font-size: 0.75rem;
-            color: var(--color-text-tertiary);
-            margin-top: 4px;
-        }
-
-        .phone-elapsed {
-            margin-top: 24px;
-            font-size: 0.875rem;
-            color: var(--color-text-secondary);
-        }
-
-        .hero-watch {
-            position: absolute;
-            right: -40px;
-            bottom: 60px;
-            z-index: 3;
-        }
-
-        .hero-watch-frame {
-            width: 140px;
-            height: 170px;
-            background: linear-gradient(145deg, #3a3a3c 0%, #2c2c2e 100%);
-            border-radius: 36px;
-            padding: 8px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4),
-                        0 0 0 1px rgba(255, 255, 255, 0.1);
-        }
-
-        .hero-watch-screen {
-            width: 100%;
-            height: 100%;
-            background: var(--color-bg);
-            border-radius: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-        }
-
-        .watch-phase {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--color-run);
-            margin-bottom: 8px;
-        }
-
-        .watch-timer {
-            font-size: 1.75rem;
-            font-weight: 300;
-            font-variant-numeric: tabular-nums;
-        }
-
-        .hero-glow {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(48, 209, 88, 0.2) 0%, transparent 70%);
-            filter: blur(60px);
-            z-index: 1;
-        }
-
-        /* ===== Features Section ===== */
-        .features {
-            padding: 120px 0;
-            position: relative;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 640px;
-            margin: 0 auto 80px;
-        }
-
-        .section-label {
-            display: inline-block;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--color-accent);
+            font-weight: 500;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 16px;
+            color: var(--split);
         }
 
         .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 20px;
-            letter-spacing: -0.02em;
-        }
-
-        .section-subtitle {
-            font-size: 1.125rem;
-            color: var(--color-text-secondary);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-
-        .feature-card {
-            padding: 32px;
-            text-align: center;
-            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .feature-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 24px;
-            background: var(--gradient-card);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-        }
-
-        .feature-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .feature-desc {
-            font-size: 0.9375rem;
-            color: var(--color-text-secondary);
-            line-height: 1.6;
-        }
-
-        /* ===== How It Works Section ===== */
-        .how-it-works {
-            padding: 120px 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.02) 50%, transparent 100%);
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 48px;
-            position: relative;
-        }
-
-        .steps-grid::before {
-            content: '';
-            position: absolute;
-            top: 48px;
-            left: calc(16.67% + 24px);
-            right: calc(16.67% + 24px);
-            height: 2px;
-            background: linear-gradient(90deg, var(--color-run) 0%, var(--color-walk) 100%);
-            opacity: 0.3;
-        }
-
-        .step-card {
-            text-align: center;
-            position: relative;
-        }
-
-        .step-number {
-            width: 96px;
-            height: 96px;
-            margin: 0 auto 32px;
-            background: var(--color-bg-elevated);
-            border: 2px solid var(--color-border-glass);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--color-accent);
-            position: relative;
-            z-index: 1;
-        }
-
-        .step-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .step-desc {
-            font-size: 1rem;
-            color: var(--color-text-secondary);
-            max-width: 280px;
-            margin: 0 auto;
-        }
-
-        /* ===== Audience Section ===== */
-        .audience {
-            padding: 120px 0;
-        }
-
-        .audience-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-
-        .audience-card {
-            padding: 40px 32px;
-            transition: transform var(--transition-medium);
-        }
-
-        .audience-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .audience-emoji {
-            font-size: 3rem;
-            margin-bottom: 24px;
-        }
-
-        .audience-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .audience-desc {
-            font-size: 1rem;
-            color: var(--color-text-secondary);
-            line-height: 1.7;
-        }
-
-        /* ===== Strava Section ===== */
-        .strava {
-            padding: 120px 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(252, 76, 2, 0.03) 50%, transparent 100%);
-        }
-
-        .strava-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .strava-text {
-            max-width: 480px;
-        }
-
-        .strava-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: rgba(252, 76, 2, 0.1);
-            border: 1px solid rgba(252, 76, 2, 0.2);
-            border-radius: 100px;
-            font-size: 0.875rem;
-            color: #fc4c02;
-            margin-bottom: 24px;
-        }
-
-        .strava-title {
-            font-size: clamp(1.75rem, 3vw, 2.5rem);
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .strava-desc {
-            font-size: 1.125rem;
-            color: var(--color-text-secondary);
-            margin-bottom: 32px;
-            line-height: 1.7;
-        }
-
-        .strava-features {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .strava-feature {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1rem;
-            color: var(--color-text-secondary);
-        }
-
-        .strava-feature-icon {
-            width: 24px;
-            height: 24px;
-            background: rgba(252, 76, 2, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fc4c02;
-            font-size: 0.75rem;
-        }
-
-        .strava-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .strava-logo-container {
-            width: 200px;
-            height: 200px;
-            background: var(--color-bg-glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--color-border-glass);
-            border-radius: var(--radius-xl);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
-        }
-
-        .strava-logo {
-            font-size: 4rem;
+            font-family: var(--font-display);
             font-weight: 800;
-            color: #fc4c02;
+            font-size: clamp(1.6rem, 3.4vw, 2rem);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-top: 14px;
         }
 
-        /* ===== CTA Section ===== */
-        .cta {
-            padding: 120px 0;
+        .lede {
+            color: var(--split);
+            max-width: 56ch;
         }
 
-        .cta-card {
-            padding: 80px;
-            text-align: center;
-            background: var(--gradient-card);
-            position: relative;
-            overflow: hidden;
+        /* ===== Interval rule =====
+           The app's rhythm used as structure: run blocks and walk blocks,
+           60/30/60/30, repeating. Decorative, so it is hidden from the
+           accessibility tree at the markup.
+
+           Held inside `.wrap` so it lines up with the type either side of it,
+           and used three times only. Full bleed at every section boundary
+           turned a motif into five loud hairlines, and the eye stopped reading
+           it as the intervals at all. */
+        .interval-rule {
+            height: 4px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--run) 0 60px,
+                var(--walk) 60px 90px,
+                var(--run) 90px 150px,
+                var(--walk) 150px 180px
+            );
+            opacity: 0.9;
         }
 
-        .cta-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(48, 209, 88, 0.1) 0%, transparent 50%);
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .cta-subtitle {
-            font-size: 1.25rem;
-            color: var(--color-text-secondary);
-            margin-bottom: 40px;
-            max-width: 480px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-price {
-            display: flex;
-            align-items: baseline;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 32px;
-        }
-
-        .cta-price-amount {
-            font-size: 3rem;
-            font-weight: 700;
-        }
-
-        .cta-price-period {
-            font-size: 1.125rem;
-            color: var(--color-text-tertiary);
-        }
-
-        .cta-note {
-            font-size: 0.875rem;
-            color: var(--color-text-tertiary);
-            margin-top: 24px;
-        }
-
-        /* ===== Footer ===== */
-        .footer {
-            padding: 60px 0;
-            border-top: 1px solid var(--color-border-glass);
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .footer-logo {
-            width: 32px;
-            height: 32px;
-            background: var(--gradient-hero);
-            border-radius: var(--radius-sm);
-        }
-
-        .footer-name {
-            font-weight: 600;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 32px;
-        }
-
-        .footer-link {
-            font-size: 0.875rem;
-            color: var(--color-text-secondary);
-            transition: color var(--transition-fast);
-        }
-
-        .footer-link:hover {
-            color: var(--color-text-primary);
-        }
-
-        .footer-copyright {
-            font-size: 0.875rem;
-            color: var(--color-text-tertiary);
-        }
-
-        /* ===== Accessibility ===== */
+        /* ===== Skip link ===== */
         .skip-link {
             position: absolute;
             left: 16px;
-            top: 0;
-            padding: 8px 16px;
-            background: var(--color-accent);
-            color: #000;
-            font-weight: 600;
-            border-radius: var(--radius-sm);
-            z-index: 1001;
-            transform: translateY(-100%);
-            transition: transform var(--transition-fast);
+            top: 12px;
+            z-index: 100;
+            padding: 10px 16px;
+            background: var(--lane);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-pill);
+            font-size: 0.875rem;
+            /* Height-independent: a fixed negative `top` leaves a visible bar
+               whenever the element is taller than the offset. */
+            transform: translateY(-200%);
+            transition: transform 0.15s ease;
         }
 
         .skip-link:focus {
             transform: translateY(0);
         }
 
-        a:focus-visible,
-        button:focus-visible {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 2px;
+        /* ===== Nav ===== */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: var(--track);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding-block: 16px;
+        }
+
+        .wordmark {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.125rem;
+            letter-spacing: -0.01em;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border-radius: var(--radius-pill);
+            background: var(--run);
+            color: var(--track);
+            font-family: var(--font-data);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+            transition: background 0.2s ease;
+        }
+
+        .pill:hover { background: #FF7E56; }
+
+        /* ===== Hero ===== */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: clamp(40px, 6vw, 72px);
+            align-items: center;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            line-height: 1.02;
+            letter-spacing: -0.03em;
+        }
+
+        /* The method, set in type. Heavy run, light walk, solid repeat. */
+        .hero-title .w-run {
+            font-weight: 900;
+            font-stretch: 112%;
+            color: var(--run);
+        }
+
+        .hero-title .w-walk {
+            font-weight: 300;
+            font-stretch: 100%;
+            color: var(--walk);
+        }
+
+        .hero-title .w-repeat {
+            font-weight: 800;
+            color: var(--chalk);
+        }
+
+        .hero-sub {
+            margin-top: 24px;
+            color: var(--split);
+            max-width: 46ch;
+        }
+
+        .hero-actions { margin-top: 32px; }
+
+        .store-badge { height: 52px; width: auto; }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--line);
+            font-family: var(--font-data);
+            font-size: 0.8125rem;
+            color: var(--split);
+        }
+
+        .hero-meta li + li {
+            padding-left: 20px;
+            border-left: 1px solid var(--line);
+        }
+
+        /* ===== The signature: a live interval ===== */
+        .hero-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .timer {
+            position: relative;
+            width: clamp(200px, 58vw, 280px);
+            aspect-ratio: 1;
+        }
+
+        /* Rings start at twelve o'clock. The rotation is applied inside the
+           SVG coordinate system rather than to the element, which would
+           distort any box that is not square. */
+        .timer-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .timer-track-ring {
+            fill: none;
+            stroke: var(--line);
+            stroke-width: 12;
+        }
+
+        .timer-progress {
+            fill: none;
+            stroke-width: 12;
+            stroke-linecap: round;
+            stroke: var(--run);
+            transition: stroke 0.35s ease;
+        }
+
+        .timer-readout {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .timer-phase {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-stretch: 112%;
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            letter-spacing: 0.16em;
+            color: var(--run);
+            transition: color 0.35s ease;
+        }
+
+        .timer-digits {
+            font-family: var(--font-data);
+            font-weight: 400;
+            font-size: clamp(2.6rem, 7.5vw, 3.5rem);
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+            color: var(--chalk);
+        }
+
+        .timer[data-phase="walk"] .timer-progress { stroke: var(--walk); }
+        .timer[data-phase="walk"] .timer-phase { color: var(--walk); }
+
+        .timer-caption {
+            font-family: var(--font-data);
+            font-size: 0.75rem;
+            letter-spacing: 0.06em;
+            color: var(--split);
+            text-align: center;
+            max-width: 40ch;
+            /* Breaks between the two sentences instead of orphaning "That".
+               Ignored by browsers without support, which fall back to the
+               ordinary greedy break. */
+            text-wrap: balance;
+        }
+
+        /* ===== Cards ===== */
+        .card {
+            background: var(--lane);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-card);
+            padding: 28px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 48px;
+        }
+
+        .feature-icon {
+            color: var(--split);
+            margin-bottom: 18px;
+        }
+
+        .feature-title {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.0625rem;
+            letter-spacing: -0.01em;
+            margin-bottom: 8px;
+        }
+
+        .feature-desc {
+            color: var(--split);
+            font-size: 0.9375rem;
+            line-height: 1.55;
+        }
+
+        /* ===== New in 3.0 ===== */
+        .sync-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(40px, 6vw, 72px);
+            align-items: center;
+        }
+
+        .sync-eyebrow { color: var(--walk); }
+
+        .sync-body {
+            margin-top: 18px;
+            color: var(--split);
+            max-width: 46ch;
+        }
+
+        .sync-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .sync-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.9375rem;
+            color: var(--split);
+        }
+
+        .sync-check {
+            color: var(--walk);
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .sync-visual {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* The hero's device, one screen later: same ring language, same
+           readout stack, scaled to the wrist. */
+        .watch {
+            width: 184px;
+            height: 224px;
+            background: var(--lane);
+            border: 1px solid var(--line);
+            border-radius: 46px;
+            padding: 12px;
+        }
+
+        .watch-screen {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: var(--track);
+            border-radius: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .watch-svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .watch-ring-track {
+            fill: none;
+            stroke: var(--line);
+            stroke-width: 5;
+        }
+
+        .watch-ring-progress {
+            fill: none;
+            stroke: var(--walk);
+            stroke-width: 5;
+            stroke-linecap: round;
+        }
+
+        .watch-readout {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .watch-label {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 0.75rem;
+            letter-spacing: 0.16em;
+            color: var(--walk);
+        }
+
+        .watch-split {
+            font-family: var(--font-data);
+            font-size: 1.5rem;
+            font-variant-numeric: tabular-nums;
+            color: var(--chalk);
+        }
+
+        .watch-split span {
+            font-size: 0.8125rem;
+            color: var(--split);
+            margin-left: 3px;
+        }
+
+        /* ===== How it works ===== */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 48px;
+        }
+
+        .step-number {
+            font-family: var(--font-data);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: var(--split);
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .step-title {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.0625rem;
+            margin-bottom: 8px;
+        }
+
+        .step-desc {
+            color: var(--split);
+            font-size: 0.9375rem;
+            line-height: 1.55;
+        }
+
+        /* ===== Price ===== */
+        .price-card {
+            max-width: 640px;
+            margin-inline: auto;
+            text-align: center;
+            padding: clamp(36px, 6vw, 56px) 32px;
+        }
+
+        .price-amount {
+            font-family: var(--font-data);
+            font-weight: 500;
+            font-size: clamp(3rem, 9vw, 4rem);
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+            color: var(--chalk);
+        }
+
+        .price-terms {
+            font-family: var(--font-data);
+            font-size: 0.875rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--run);
+            margin-top: 14px;
+        }
+
+        .price-body {
+            margin-top: 24px;
+            color: var(--split);
+            font-size: 0.9375rem;
+            max-width: 46ch;
+            margin-inline: auto;
+        }
+
+        /* ===== CTA ===== */
+        .cta-inner {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .cta-title {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+            letter-spacing: -0.02em;
+        }
+
+        /* Answers the question the badge raises, so the section does not end
+           on an unpriced button. */
+        .cta-terms {
+            font-family: var(--font-data);
+            font-size: 0.8125rem;
+            letter-spacing: 0.06em;
+            color: var(--split);
+            margin-top: -8px;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            border-top: 1px solid var(--line);
+            padding-block: 48px;
+        }
+
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer-name {
+            font-family: var(--font-display);
+            font-weight: 800;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            font-size: 0.875rem;
+            color: var(--split);
+        }
+
+        .footer-links a:hover { color: var(--chalk); }
+
+        .footer-copyright {
+            font-family: var(--font-data);
+            font-size: 0.75rem;
+            color: var(--split);
+            width: 100%;
+            padding-top: 20px;
+            border-top: 1px solid var(--line);
         }
 
         /* ===== Responsive ===== */
-        @media (max-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 60px;
-                text-align: center;
-            }
-
-            .hero-text {
-                max-width: 100%;
-            }
-
-            .hero-cta-group {
-                justify-content: center;
-            }
-
-            .hero-meta {
-                justify-content: center;
-            }
-
-            .hero-visual {
-                order: -1;
-            }
-
-            .hero-watch {
-                right: 20px;
-                bottom: 40px;
-            }
-
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .steps-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .steps-grid::before {
-                display: none;
-            }
-
-            .audience-grid {
+        @media (max-width: 900px) {
+            .hero-grid,
+            .sync-grid {
                 grid-template-columns: 1fr;
             }
 
-            .strava-content {
-                grid-template-columns: 1fr;
-                gap: 60px;
-                text-align: center;
-            }
+            /* The timer leads on a phone: it is the whole argument. */
+            .hero-visual { order: -1; }
 
-            .strava-text {
-                max-width: 100%;
-            }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
 
-            .strava-features {
-                align-items: center;
-            }
-
-            .cta-card {
-                padding: 60px 40px;
-            }
+            .steps { grid-template-columns: 1fr; }
         }
 
-        @media (max-width: 768px) {
-            .nav-cta span {
-                display: none;
+        @media (max-width: 560px) {
+            body { font-size: 16px; }
+
+            .features-grid { grid-template-columns: 1fr; }
+
+            /* Hairlines between meta items only read while they sit on one
+               line; stacked, they hang off the start of each row. */
+            .hero-meta { flex-direction: column; gap: 8px; }
+
+            .hero-meta li + li {
+                padding-left: 0;
+                border-left: 0;
             }
 
-            .hero {
-                padding: 100px 0 60px;
-                min-height: auto;
-            }
-
-            .hero-phone-frame {
-                width: 240px;
-                height: 500px;
-            }
-
-            .phone-timer-ring {
-                width: 150px;
-                height: 150px;
-            }
-
-            .phone-timer-inner {
-                width: 130px;
-                height: 130px;
-            }
-
-            .phone-timer-time {
-                font-size: 2rem;
-            }
-
-            .hero-watch {
-                display: none;
-            }
-
-            .hero-meta {
-                flex-direction: column;
-                gap: 16px;
-                align-items: center;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .feature-card {
-                padding: 24px;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                gap: 24px;
-                text-align: center;
-            }
-
-            .footer-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
+            .card { padding: 24px; }
         }
 
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 16px;
-            }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
 
-            .hero-phone-frame {
-                width: 220px;
-                height: 460px;
-                border-radius: 36px;
-            }
-
-            .hero-phone-screen {
-                border-radius: 30px;
-                padding: 32px 16px;
-            }
-
-            .cta-card {
-                padding: 48px 24px;
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
             }
         }
     </style>
@@ -1015,248 +711,324 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Navigation -->
     <nav class="nav">
-        <div class="container nav-content">
-            <a href="/" class="nav-logo">
-                <div class="nav-logo-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                    </svg>
-                </div>
-                RunWalk
-            </a>
-            <a href="https://apps.apple.com/app/id6757393068" class="nav-cta" target="_blank" rel="noopener">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                </svg>
-                <span>Download</span>
-            </a>
+        <div class="wrap nav-inner">
+            <span class="wordmark">RunWalk</span>
+            <a href="#download" class="pill">Get the app</a>
         </div>
     </nav>
 
     <main id="main-content">
-        <!-- Hero Section -->
-        <section class="hero" id="hero">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <div class="hero-badge">
-                    <span class="hero-badge-dot"></span>
-                    Available on iPhone & Apple Watch
+        <!-- Hero -->
+        <section class="band">
+            <div class="wrap hero-grid">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="w-run">Run.</span>
+                        <span class="w-walk">Walk.</span>
+                        <span class="w-repeat">Repeat.</span>
+                    </h1>
+                    <p class="hero-sub">The interval timer for the run-walk method. Voice cues at every switch, so your phone stays in your pocket and you keep moving.</p>
+                    <div class="hero-actions">
+                        <a href="https://apps.apple.com/app/id6757393068">
+                            <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Download RunWalk on the App Store" class="store-badge">
+                        </a>
+                    </div>
+                    <ul class="hero-meta" role="list">
+                        <li>$4.99 once</li>
+                        <li>No ads, no subscription</li>
+                        <li>iPhone + Apple Watch</li>
+                    </ul>
                 </div>
-                <h1 class="hero-title">
-                    Run more. <span class="gradient-text">Walk smart.</span> Go further.
-                </h1>
-                <p class="hero-subtitle">
-                    The beautifully simple interval timer for the Run-Walk method. Build endurance, reduce injury risk, and actually enjoy running again.
-                </p>
-                <div class="hero-cta-group">
-                    <a href="https://apps.apple.com/app/id6757393068" target="_blank" rel="noopener">
-                        <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Download on the App Store" class="app-store-badge">
-                    </a>
-                </div>
-                <div class="hero-meta">
-                    <div class="hero-meta-item">
-                        <span class="hero-meta-value">$0.99</span>
-                        <span class="hero-meta-label">One-time purchase</span>
+
+                <div class="hero-visual">
+                    <div class="timer" id="heroTimer" data-phase="run" aria-hidden="true">
+                        <svg class="timer-svg" viewBox="0 0 280 280">
+                            <circle class="timer-track-ring" cx="140" cy="140" r="126"></circle>
+                            <circle class="timer-progress" id="timerProgress" cx="140" cy="140" r="126"
+                                    stroke-dasharray="791.68" stroke-dashoffset="0"
+                                    transform="rotate(-90 140 140)"></circle>
+                        </svg>
+                        <div class="timer-readout">
+                            <span class="timer-phase" id="timerPhase">RUN</span>
+                            <span class="timer-digits" id="timerDigits">0:30</span>
+                        </div>
                     </div>
-                    <div class="hero-meta-item">
-                        <span class="hero-meta-value">No Ads</span>
-                        <span class="hero-meta-label">Ever. We promise.</span>
-                    </div>
-                    <div class="hero-meta-item">
-                        <span class="hero-meta-value">GPS</span>
-                        <span class="hero-meta-label">Route tracking</span>
-                    </div>
+                    <p class="timer-caption">This is the whole app. That is the point.</p>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="hero-glow"></div>
-                <div class="hero-phone">
-                    <div class="hero-phone-frame">
-                        <div class="hero-phone-screen">
-                            <div class="phone-phase">RUN</div>
-                            <div class="phone-timer-ring">
-                                <div class="phone-timer-inner">
-                                    <div class="phone-timer-time">0:21</div>
-                                    <div class="phone-timer-label">30 sec interval</div>
-                                </div>
+        </section>
+
+        <div class="wrap">
+            <div class="interval-rule" aria-hidden="true"></div>
+        </div>
+
+        <!-- Features -->
+        <section class="band" id="features">
+            <div class="wrap">
+                <p class="eyebrow">What it does</p>
+                <h2 class="section-title">Everything the method needs. Nothing it does not.</h2>
+
+                <div class="features-grid">
+                    <article class="card">
+                        <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="13" r="8"></circle>
+                            <path d="M12 9v4l2.5 1.6"></path>
+                            <path d="M9 2h6"></path>
+                        </svg>
+                        <h3 class="feature-title">Smart Intervals</h3>
+                        <p class="feature-desc">Time or distance intervals, from 10 seconds to 30 minutes. Six presets or build your own.</p>
+                    </article>
+
+                    <article class="card">
+                        <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"></path>
+                            <circle cx="12" cy="10" r="2.5"></circle>
+                        </svg>
+                        <h3 class="feature-title">GPS Routes</h3>
+                        <p class="feature-desc">A live map and pace while you run. The route saves with the workout.</p>
+                    </article>
+
+                    <article class="card">
+                        <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="6.5" y="6.5" width="11" height="11" rx="3.5"></rect>
+                            <path d="M9.6 6.5V4.2A1.7 1.7 0 0 1 11.3 2.5h1.4a1.7 1.7 0 0 1 1.7 1.7v2.3"></path>
+                            <path d="M9.6 17.5v2.3a1.7 1.7 0 0 0 1.7 1.7h1.4a1.7 1.7 0 0 0 1.7-1.7v-2.3"></path>
+                            <path d="M17.5 10.7v2.6"></path>
+                            <circle cx="12" cy="12" r="2.6"></circle>
+                        </svg>
+                        <h3 class="feature-title">Apple Watch</h3>
+                        <p class="feature-desc">Fully standalone. Leave your phone at home, and every workout still lands in the iPhone app on its own.</p>
+                    </article>
+
+                    <article class="card">
+                        <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 20.1l-1-.9C6.3 15 3.2 12.2 3.2 8.8A4.6 4.6 0 0 1 7.8 4.2c1.6 0 3.1.8 4.2 2.1 1.1-1.3 2.6-2.1 4.2-2.1a4.6 4.6 0 0 1 4.6 4.6c0 3.4-3.1 6.2-7.8 10.4z"></path>
+                        </svg>
+                        <h3 class="feature-title">HealthKit</h3>
+                        <p class="feature-desc">Workouts save to Apple Health with your permission. Your rings will thank you.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- New in 3.0 -->
+        <section class="band">
+            <div class="wrap sync-grid">
+                <div>
+                    <p class="eyebrow sync-eyebrow">New in 3.0</p>
+                    <h2 class="section-title">Your watch runs. Your phone keeps the log.</h2>
+                    <p class="sync-body">Finish a workout on your Apple Watch and it appears in the iPhone app on its own. Workouts recorded before the update come across too.</p>
+                    <ul class="sync-list" role="list">
+                        <li class="sync-item">
+                            <svg class="sync-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M20 6L9 17l-5-5"></path>
+                            </svg>
+                            <span>Workouts transfer by themselves</span>
+                        </li>
+                        <li class="sync-item">
+                            <svg class="sync-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M20 6L9 17l-5-5"></path>
+                            </svg>
+                            <span>Every mile: a tap on the wrist and your split on a card, with voice callouts along the way</span>
+                        </li>
+                        <li class="sync-item">
+                            <svg class="sync-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M20 6L9 17l-5-5"></path>
+                            </svg>
+                            <span>Nothing to set up. It just starts working</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sync-visual" aria-hidden="true">
+                    <div class="watch">
+                        <div class="watch-screen">
+                            <svg class="watch-svg" viewBox="0 0 160 200" preserveAspectRatio="xMidYMid meet">
+                                <circle class="watch-ring-track" cx="80" cy="100" r="62"></circle>
+                                <circle class="watch-ring-progress" cx="80" cy="100" r="62"
+                                        stroke-dasharray="389.56" stroke-dashoffset="128.6"
+                                        transform="rotate(-90 80 100)"></circle>
+                            </svg>
+                            <div class="watch-readout">
+                                <span class="watch-label">MILE 3</span>
+                                <span class="watch-split">9:41<span>/MI</span></span>
                             </div>
-                            <div class="phone-elapsed">Total: 5:23</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-watch">
-                    <div class="hero-watch-frame">
-                        <div class="hero-watch-screen">
-                            <div class="watch-phase">RUN</div>
-                            <div class="watch-timer">0:21</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Features</span>
-                <h2 class="section-title">Everything you need. Nothing you don't.</h2>
-                <p class="section-subtitle">We stripped away the complexity so you can focus on what matters: your run.</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card glass-card">
-                    <div class="feature-icon" aria-hidden="true">&#x231B;</div>
-                    <h3 class="feature-title">Smart Intervals</h3>
-                    <p class="feature-desc">9 presets from 30 sec to 15 min, plus fully custom intervals. Set it once, run forever.</p>
-                </div>
-                <div class="feature-card glass-card">
-                    <div class="feature-icon" aria-hidden="true">&#x1F4CD;</div>
-                    <h3 class="feature-title">GPS Routes</h3>
-                    <p class="feature-desc">Track your route with live maps during your workout. See distance, pace, and elevation.</p>
-                </div>
-                <div class="feature-card glass-card">
-                    <div class="feature-icon" aria-hidden="true">&#x231A;</div>
-                    <h3 class="feature-title">Apple Watch</h3>
-                    <p class="feature-desc">Fully standalone. Leave your phone at home and still get voice cues and haptics.</p>
-                </div>
-                <div class="feature-card glass-card">
-                    <div class="feature-icon" aria-hidden="true">&#x2764;</div>
-                    <h3 class="feature-title">HealthKit</h3>
-                    <p class="feature-desc">Automatically saves workouts to Apple Health. Your rings will thank you.</p>
-                </div>
-            </div>
+        <div class="wrap">
+            <div class="interval-rule" aria-hidden="true"></div>
         </div>
-    </section>
 
-    <!-- How It Works Section -->
-    <section class="how-it-works" id="how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">How It Works</span>
-                <h2 class="section-title">Simple as 1-2-3</h2>
-                <p class="section-subtitle">No accounts. No complicated setup. Just run.</p>
-            </div>
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <h3 class="step-title">Set Your Intervals</h3>
-                    <p class="step-desc">Choose how long you want to run and how long you want to walk. That's it.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <h3 class="step-title">Start Running</h3>
-                    <p class="step-desc">Hit start and go. Voice, bells, and haptics tell you exactly when to switch.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <h3 class="step-title">Review & Improve</h3>
-                    <p class="step-desc">See your stats, view your route, and track progress over time.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- How it works -->
+        <section class="band" id="how-it-works">
+            <div class="wrap">
+                <p class="eyebrow">How it works</p>
+                <h2 class="section-title">Three steps, then you are running.</h2>
 
-    <!-- Audience Section -->
-    <section class="audience" id="audience">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">For Everyone</span>
-                <h2 class="section-title">Built for runners at every level</h2>
-            </div>
-            <div class="audience-grid">
-                <div class="audience-card glass-card">
-                    <div class="audience-emoji" aria-hidden="true">&#x1F331;</div>
-                    <h3 class="audience-title">Just Starting Out</h3>
-                    <p class="audience-desc">The Run-Walk method is the gentlest way to become a runner. Build endurance without burning out. Start with 30 sec runs and work your way up.</p>
-                </div>
-                <div class="audience-card glass-card">
-                    <div class="audience-emoji" aria-hidden="true">&#x1F3C3;</div>
-                    <h3 class="audience-title">Coming Back</h3>
-                    <p class="audience-desc">Returning from injury or a long break? Run-Walk lets you ease back in safely while still getting a great workout. Listen to your body.</p>
-                </div>
-                <div class="audience-card glass-card">
-                    <div class="audience-emoji" aria-hidden="true">&#x1F3C5;</div>
-                    <h3 class="audience-title">Going Long</h3>
-                    <p class="audience-desc">Training for a marathon or ultra? Elite athletes use Run-Walk to go further with less fatigue. It's not cheating&mdash;it's strategy.</p>
+                <div class="steps">
+                    <article class="card">
+                        <p class="step-number">01</p>
+                        <h3 class="step-title">Set your intervals</h3>
+                        <p class="step-desc">Pick a preset or dial in your own run and walk lengths. Time or distance, whichever you think in.</p>
+                    </article>
+                    <article class="card">
+                        <p class="step-number">02</p>
+                        <h3 class="step-title">Start running</h3>
+                        <p class="step-desc">Put the phone away. A voice cue calls every switch, and the watch taps your wrist at each one.</p>
+                    </article>
+                    <article class="card">
+                        <p class="step-number">03</p>
+                        <h3 class="step-title">Review and improve</h3>
+                        <p class="step-desc">Distance, pace and your route, saved to history. With your permission, workouts land in Apple Health too.</p>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Strava Section -->
-    <section class="strava" id="strava">
-        <div class="container strava-content">
-            <div class="strava-text">
-                <div class="strava-badge">
-                    <span aria-hidden="true">&#x2728;</span>
-                    Coming Soon
-                </div>
-                <h2 class="strava-title">Share to Strava</h2>
-                <p class="strava-desc">Your workouts deserve an audience. Soon you'll be able to share your runs directly to Strava with one tap.</p>
-                <div class="strava-features">
-                    <div class="strava-feature">
-                        <div class="strava-feature-icon" aria-hidden="true">&#x2713;</div>
-                        <span>Automatic GPS route upload</span>
-                    </div>
-                    <div class="strava-feature">
-                        <div class="strava-feature-icon" aria-hidden="true">&#x2713;</div>
-                        <span>Distance, pace & stats synced</span>
-                    </div>
-                    <div class="strava-feature">
-                        <div class="strava-feature-icon" aria-hidden="true">&#x2713;</div>
-                        <span>Share with your community</span>
-                    </div>
-                </div>
-            </div>
-            <div class="strava-visual">
-                <div class="strava-logo-container">
-                    <div class="strava-logo">S</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="cta" id="download">
-        <div class="container">
-            <div class="cta-card glass-card">
-                <div class="cta-content">
-                    <h2 class="cta-title">Ready to run smarter?</h2>
-                    <p class="cta-subtitle">Join thousands of runners who've discovered the power of strategic walking breaks.</p>
-                    <div class="cta-price">
-                        <span class="cta-price-amount">$0.99</span>
-                        <span class="cta-price-period">one-time</span>
-                    </div>
-                    <a href="https://apps.apple.com/app/id6757393068" target="_blank" rel="noopener">
-                        <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Download on the App Store" class="app-store-badge">
-                    </a>
-                    <p class="cta-note">No subscription. No ads. No nonsense.</p>
+        <!-- Price -->
+        <section class="band">
+            <div class="wrap">
+                <div class="card price-card">
+                    <h2 class="eyebrow">The price</h2>
+                    <p class="price-amount">$4.99</p>
+                    <p class="price-terms">Once. Not per month.</p>
+                    <p class="price-body">The big couch-to-5K coaches charge 40 to 80 dollars a year. RunWalk is a single purchase with every feature included, forever. No account, no ads, no analytics.</p>
                 </div>
             </div>
+        </section>
+
+        <div class="wrap">
+            <div class="interval-rule" aria-hidden="true"></div>
         </div>
-    </section>
+
+        <!-- CTA -->
+        <section class="band" id="download">
+            <div class="wrap cta-inner">
+                <h2 class="cta-title">Ready to run smarter?</h2>
+                <a href="https://apps.apple.com/app/id6757393068">
+                    <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Download RunWalk on the App Store" class="store-badge">
+                </a>
+                <p class="cta-terms">$4.99 once. Yours forever.</p>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <div class="footer-logo"></div>
-                <span class="footer-name">RunWalk</span>
-            </div>
+        <div class="wrap footer-inner">
+            <span class="footer-name">RunWalk</span>
             <div class="footer-links">
-                <a href="privacy.html" class="footer-link">Privacy Policy</a>
-                <a href="terms.html" class="footer-link">Terms of Use</a>
-                <a href="mailto:support@freedom-terminal.com" class="footer-link">Contact</a>
-                <a href="https://freedom-terminal.com" class="footer-link">A Freedom Terminal product</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="mailto:support@freedom-terminal.com">Contact</a>
+                <a href="https://freedom-terminal.com">A Freedom Terminal product</a>
             </div>
             <div class="footer-copyright">
                 &copy; 2026 Vishut Dhar. All rights reserved.
             </div>
         </div>
     </footer>
+
+    <script>
+    /* The hero interval. One rAF loop drives the ring, the digits and the
+       phase together, so they cannot drift apart the way a CSS animation
+       paired with a separate JS tick would. */
+    (function () {
+        var timer = document.getElementById('heroTimer');
+        var ring = document.getElementById('timerProgress');
+        var phaseEl = document.getElementById('timerPhase');
+        var digitsEl = document.getElementById('timerDigits');
+        if (!timer || !ring || !phaseEl || !digitsEl) { return; }
+
+        var CIRCUMFERENCE = 791.68;   // 2 * PI * r, r = 126
+        var PHASE_SECONDS = 30;
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        var frameId = null;
+        var startedAt = null;
+        /* Seconds already run before the last pause, plus the reading at the
+           most recent frame. Together they let the loop resume exactly where it
+           stopped rather than jumping to wherever the wall clock has reached,
+           which is both smoother and impossible to mistake for a burst. */
+        var heldSeconds = 0;
+        var lastSeconds = 0;
+        var onScreen = true;
+        /* A backgrounded tab suspends requestAnimationFrame without firing the
+           observer, so the hero would otherwise come back having counted every
+           second the visitor spent elsewhere and lurch forward to catch up. */
+        var tabVisible = !document.hidden;
+
+        function paint(phase, remaining) {
+            timer.dataset.phase = phase;
+            phaseEl.textContent = phase === 'run' ? 'RUN' : 'WALK';
+            ring.style.strokeDashoffset = String(CIRCUMFERENCE * (1 - remaining / PHASE_SECONDS));
+            var seconds = Math.ceil(remaining);
+            digitsEl.textContent = '0:' + (seconds < 10 ? '0' + seconds : seconds);
+        }
+
+        function frame(now) {
+            if (startedAt === null) { startedAt = now; }
+            lastSeconds = heldSeconds + (now - startedAt) / 1000;
+            var cycle = lastSeconds % (PHASE_SECONDS * 2);
+            paint(
+                cycle < PHASE_SECONDS ? 'run' : 'walk',
+                PHASE_SECONDS - (cycle % PHASE_SECONDS)
+            );
+            frameId = window.requestAnimationFrame(frame);
+        }
+
+        function startLoop() {
+            if (frameId !== null) { return; }
+            startedAt = null;   // rebased on the first frame after resuming
+            frameId = window.requestAnimationFrame(frame);
+        }
+
+        function stopLoop() {
+            if (frameId === null) { return; }
+            window.cancelAnimationFrame(frameId);
+            frameId = null;
+            heldSeconds = lastSeconds;
+        }
+
+        function apply() {
+            if (reduceMotion.matches) {
+                stopLoop();
+                // Held mid-run rather than at zero: a stopped clock reading
+                // 0:00 looks broken, one reading 0:21 looks paused.
+                paint('run', 21);
+                return;
+            }
+            if (onScreen && tabVisible) { startLoop(); } else { stopLoop(); }
+        }
+
+        // Nothing to animate while the hero is scrolled away. Without this the
+        // loop keeps a frame callback alive down the whole page and on into
+        // every other tab the visitor leaves open.
+        if (typeof window.IntersectionObserver === 'function') {
+            new window.IntersectionObserver(function (entries) {
+                onScreen = entries[entries.length - 1].isIntersecting;
+                apply();
+            }, { threshold: 0 }).observe(timer);
+        }
+
+        document.addEventListener('visibilitychange', function () {
+            tabVisible = !document.hidden;
+            apply();
+        });
+
+        apply();
+
+        if (typeof reduceMotion.addEventListener === 'function') {
+            reduceMotion.addEventListener('change', apply);
+        } else if (typeof reduceMotion.addListener === 'function') {
+            reduceMotion.addListener(apply);
+        }
+    })();
+    </script>
 </body>
 </html>

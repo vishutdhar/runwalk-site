@@ -43,6 +43,18 @@ a:hover {
     text-decoration: underline;
 }
 
+/* Links sitting inside a sentence are underlined at rest, not only on hover.
+   The accent against body text is close to 1:1 in luminance, so colour alone
+   is no distinction at all to a reader who cannot separate those two hues.
+   Links in the nav and footer are found by position rather than by contrast
+   with surrounding prose, so they keep the plain treatment. */
+.section p a,
+.section li a,
+.highlight-box a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
 a:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
