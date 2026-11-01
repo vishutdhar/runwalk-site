@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Canter is a run walk interval timer for iPhone and Apple Watch. It calls every switch out loud and includes two Zero to 5K plans. $4.99 once, no subscription.">
-    <meta name="keywords" content="Canter, run walk interval timer, zero to 5K, 5K training, run walk, running app, Galloway method, Apple Watch, iOS, fitness">
+    <meta name="keywords" content="Canter, run walk interval timer, zero to 5K, 5K training, run walk, running app, Apple Watch, iOS, Android, fitness">
     <meta name="author" content="Vishut Dhar">
 
     <!-- Safari shows the App Store banner for the app at the top of the page. -->
@@ -41,14 +41,16 @@
         "@type": "SoftwareApplication",
         "name": "Canter",
         "alternateName": "RunWalk",
-        "operatingSystem": "iOS, watchOS",
+        "url": "https://vishutdhar.github.io/runwalk-site/",
+        "image": "https://vishutdhar.github.io/runwalk-site/og-image.png",
+        "operatingSystem": "iOS, watchOS, Android",
         "applicationCategory": "HealthApplication",
         "offers": {
             "@type": "Offer",
             "price": "4.99",
             "priceCurrency": "USD"
         },
-        "description": "Canter is a run walk interval timer for iPhone and Apple Watch. It calls every switch out loud and includes two Zero to 5K plans. $4.99 once, no subscription.",
+        "description": "Canter is a run walk interval timer for iPhone, Apple Watch and Android. It calls every switch out loud and includes two Zero to 5K plans. $4.99 once, no subscription.",
         "author": {
             "@type": "Person",
             "name": "Vishut Dhar"
@@ -276,6 +278,7 @@
         }
 
         .badge { width: 150px; height: auto; }
+        .badge-play { width: 168px; margin-left: var(--s2); }
 
         .hero-body .fine { margin-top: var(--s2); }
 
@@ -980,10 +983,13 @@
                 <a class="badge-link" href="https://apps.apple.com/us/app/canter-run-walk-training/id6757393068">
                     <img class="badge" src="app-store-badge.svg" width="120" height="40" alt="Download on the App Store">
                 </a>
-                <!-- Google Play badge goes here once the Play listing is live. -->
+                <a class="badge-link" href="https://play.google.com/store/apps/details?id=com.vishutdhar.runwalk">
+                    <img class="badge badge-play" src="google-play-badge.png" width="646" height="250" alt="Get it on Google Play">
+                </a>
                 <div class="download-notes">
                     <p class="fine">Needs an iPhone with iOS 17 or later. The Apple Watch app is included.</p>
-                    <p class="fine">Android is in closed testing.</p>
+                    <p class="fine">On iPhone Duo, open it up and the Log shows every workout beside its route map and stats.</p>
+                    <p class="fine">Also on Android, with the same plans and cues.</p>
                 </div>
             </div>
         </section>
